@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>서울시 열린데이터 광장 OpenAPI 샘플(Javascript)</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <main>
+        <h1>서울 문화행사 정보</h1>
+        <nav id="gnb">
+          <button class="on" data-cate="general">전체</button>
+          <button data-cate="business">뮤지컬/오페라</button>
+          <button data-cate="entertainment">클래식</button>
+          <button data-cate="health">전시/미술</button>
+          <button data-cate="science">국악</button>
+          <button data-cate="sports">무용</button>
+          <br />
+          <button data-cate="technology">연극</button>
+          <button data-cate="technology">콘서트</button>
+          <button data-cate="technology">교육/체험</button>
+          <button data-cate="technology">축제</button>
+          <button data-cate="technology">기타</button>
+        </nav>
+        <div class="inputArea">
+          <input type="text" />
+          <button class="searchBtn">검색</button>
+        </div>
+        <ul class="listCon" id="listCon">
+          <!-- <li>
+            <div class="newsImg"><img src="./No_Image.jpg" alt="" /></div>
+            <p class="title">제목</p>
+            <p class="desc">발문</p>
+            <p class="source">제공자</p>
+            <p class="date">작성일</p>
+            <a class="more" href="">자세히보기</a>
+          </li> -->
+        </ul>
+        <div class="pgCon">
+          <!-- <button class="prev">이전</button>
+          <button class="on">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button class="next">다음</button> -->
+        </div>
+      </main>
+    </div>
+    <script>
+      const API_KEY = '4853614d6979736836345255477a42';
+
+      const getData = async () => {
+        let res = await fetch(
+          `http://openapi.seoul.go.kr:8088/${API_KEY}/json/culturalEventInfo/1/5/`
+        );
+        let data = await res.json();
+        console.log(data);
+
+        let rows = data.culturalEventInfo.row;
+        console.log(rows);
+        console.log(rows[0].CODENAME);
+        for (let i = 0; i < rows.length; i++) {
+          if (rows[i].CODENAME === '클래식') {
+            console.log(rows[i].TITLE, rows[i].PLACE, rows[i].DATE);
+          }
+        }
+      };
+      getData();
+    </script>
+  </body>
+</html>
