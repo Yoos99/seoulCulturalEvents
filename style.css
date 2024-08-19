@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  background-color: #fcfef0;
+}
+
+main {
+  max-width: 1200px;
+  width: calc(100% - 2rem);
+  margin: auto;
+}
+main > * {
+  margin-bottom: 1em;
+}
+h1 {
+  text-align: center;
+  color: #ff4d4d;
+  padding-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 img {
+  margin: 0.5em;
+  height: 3em;
+}
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+#gnb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* 버튼 위 아래 간격 */
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* 버튼 간의 간격 */
+}
+
+.btn-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+  background-color: rgba(246, 245, 247, 0.5);
+  padding: 5px 5px;
+  margin-bottom: 7px;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1em;
+  font-weight: bold;
+}
+nav button {
+  padding: 0.75em;
+}
+
+.btn-icon:hover {
+  background-color: #ff4d4d;
+}
+
+.btn-icon:hover img {
+  filter: invert(1); /* 이미지 색상을 흰색으로 변경 */
+}
+.btn-icon.active {
+  background-color: #ff4d4d;
+}
+
+.btn-icon.active img {
+  filter: invert(1); /* 이미지 색상을 흰색으로 변경 */
+}
+
+.inputArea {
+  width: 70%;
+  position: relative;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #f3efef;
+  box-sizing: border-box;
+  height: 38px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.inputArea input[type='text'] {
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  padding: 0 1em;
+}
+
+.inputArea .dateInput {
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  border: 1px solid #c9baba;
+  outline: none;
+  height: 100%;
+  padding: 0 0.5em;
+  cursor: pointer;
+}
+
+.inputArea .searchBtn {
+  background-color: #ff594d;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0 0.5em;
+  cursor: pointer;
+  border: none;
+  height: 100%;
+}
+
+/*ul*/
+.listCon {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75em;
+  font-size: 0.8em;
+}
+.listCon > li {
+  background-color: #ffffff;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 0.8em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+  margin-bottom: 0.5em;
+  position: relative;
+}
+.listCon > li > * {
+  width: 100%;
+}
+.listCon > li .date {
+  font-weight: bold;
+  width: auto;
+}
+
+@media (max-width: 900px) {
+  /* 왜 그냥 none하면 안되고 !important를 붙여야 하는지 모르겠음 */
+  nav {
+    display: none !important;
+  }
+
+  .listCon {
+    grid-template-columns: 1fr;
+  }
+}
+
+.listCon .eventsImg {
+  position: relative;
+  padding-top: 90%;
+  border-radius: 8%;
+  overflow: hidden;
+  margin-bottom: 0.5em;
+}
+.listCon img {
+  position: absolute;
+  width: 100%;
+  height: 92%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+.listCon .title,
+.listCon .date {
+  font-size: 1.2em;
+  font-family: 'Noto Sans KR', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+
+.listCon .place {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-left: 0.6em;
+}
+
+.listCon .more {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: transparent;
+}
+
+.pgCon {
+  display: flex;
+  justify-content: center;
+  padding: 0.7em 0;
+  gap: 0.5em;
+}
+.pgCon button {
+  width: 36px;
+  height: 36px;
+  border-radius: 20%;
+  background-color: transparent;
+}
+
+.pgCon button.on {
+  border: 2px solid #ff4d4d;
+  background-color: transparent;
+}
