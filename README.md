@@ -28,7 +28,9 @@
 
 - 웹 기준
   ![image](https://github.com/user-attachments/assets/c64bcada-8db9-4bb1-b116-0c85b3d1bb71)
+
 - maxWidth-900px 이하
+
   ![image](https://github.com/user-attachments/assets/919d3294-4e84-489c-81fe-b37892879fc3)
 
 ### 서울 열린데이터 광장 API
