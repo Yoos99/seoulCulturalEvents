@@ -172,10 +172,25 @@ nav button {
 
 .hamburger {
   font-size: 1.5em;
+  width: 50px;
+  height: 50px;
+  right: 30px;
   cursor: pointer;
-  padding: 10px;
-  color: #000;
-  display: none; /* 기본적으로 숨김 */
+  display: none;
+  position: absolute;
+}
+
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  border: 1px solid #f3efef;
+  background-color: #f3efef;
+  overflow-x: hidden;
+  transition: 1s;
+  padding-top: 60px;
 }
 
 .side-nav a {
@@ -183,7 +198,7 @@ nav button {
   text-decoration: none;
   font-size: 1.5em;
   color: #000;
-  display: block;
+  display: none;
   transition: 0.3s;
   text-align: center;
 }
@@ -192,37 +207,23 @@ nav button {
   background-color: #f1b44c;
 }
 
-.side-nav .closebtn {
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 2em;
-  margin-left: 50px;
-}
-
-/* 메인 컨텐츠 */
-#mainContent {
-  margin-left: 60px;
-  padding: 16px;
-  transition: margin-left 0.5s;
-}
-
 @media (max-width: 900px) {
-  /* 왜 그냥 none하면 안되고 !important를 붙여야 하는지 모르겠음 */
-  .main-nav {
-    display: none !important;
-  }
-
   .listCon {
     grid-template-columns: 1fr;
   }
 
   .hamburger {
-    display: block; /* 900px 이하일 때 햄버거 버튼 보이기 */
+    display: block;
   }
 
+  .side-nav {
+    width: 250px;
+  }
+  .side-nav a {
+    display: block;
+  }
   nav#gnb {
-    display: none; /* 900px 이하일 때 네비게이션 숨기기 */
+    display: none;
   }
 }
 
