@@ -13,7 +13,70 @@
           <img src="./Frame.svg" />
           <span>Seoul Cultural Events</span>
         </h1>
-        <nav id="gnb">
+
+        <div class="hamburger" onclick="toggleNav()">
+          <i class="fas fa-bars"></i> &#9776;
+        </div>
+        <nav id="hamburgerNav" class="side-nav">
+          <ul>
+            <li>
+              <a href="#" data-cate="전체" onclick="fetchCategory(event)"
+                >전체</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="뮤지컬" onclick="fetchCategory(event)"
+                >뮤지컬/오페라</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="클래식" onclick="fetchCategory(event)"
+                >클래식</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="전시" onclick="fetchCategory(event)"
+                >전시/미술</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="국악" onclick="fetchCategory(event)"
+                >국악</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="무용" onclick="fetchCategory(event)"
+                >무용</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="연극" onclick="fetchCategory(event)"
+                >연극</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="콘서트" onclick="fetchCategory(event)"
+                >콘서트</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="교육" onclick="fetchCategory(event)"
+                >교육/체험</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="축제" onclick="fetchCategory(event)"
+                >축제</a
+              >
+            </li>
+            <li>
+              <a href="#" data-cate="기타" onclick="fetchCategory(event)"
+                >기타</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <nav id="gnb" class="main-nav">
           <div class="button-group">
             <button class="on" data-cate="전체">
               <div class="btn-icon">
@@ -85,6 +148,7 @@
             </button>
           </div>
         </nav>
+
         <div class="inputArea">
           <input type="date" class="dateInput" id="dateInput" />
           <input
@@ -309,8 +373,47 @@
           button.classList.add('active');
         });
       });
+      // 햄버거 메뉴 토글
+      function toggleNav() {
+        const navMenu = document.getElementById('hamburgerNav');
+        if (navMenu.style.display === 'block') {
+          navMenu.style.display = 'none';
+        } else {
+          navMenu.style.display = 'block';
+        }
+      }
 
-      // 초기 행사 목록 로드
+      // 카테고리 선택 시 이벤트 처리
+      function fetchCategory(event) {
+        event.preventDefault();
+        const category = event.target.getAttribute('data-cate');
+        fetchEvents(category); // 카테고리 값으로 이벤트를 가져오는 함수 호출
+      }
+      // 화면 크기 변경 감지 및 UI 업데이트
+      const updateSizes = () => {
+        const currentWidth = window.innerWidth;
+        let newPageSize, newGroupSize;
+
+        if (currentWidth <= 900) {
+          newPageSize = 3;
+          newGroupSize = 5;
+        } else {
+          newPageSize = 9;
+          newGroupSize = 10;
+        }
+        // 조건안주면 1px 움직일때마다 자꾸 값 불러옴.
+        if (newPageSize !== pageSize || newGroupSize !== groupSize) {
+          pageSize = newPageSize;
+          groupSize = newGroupSize;
+
+          // UI 업데이트 안하면 900보다 커져도 3개씩만 보임
+          fetchEvents(currentCategory, currentQuery, page, currentDate);
+        }
+      };
+
+      updateSizes();
+      window.addEventListener('resize', updateSizes);
+
       fetchEvents();
     </script>
   </body>
